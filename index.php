@@ -216,7 +216,13 @@
             <p class="exercice-txt">Afficher le prénom et l'âge du joueur le plus jeune dans une phrase dans une balise HTML P.</p>
             <div class="exercice-sandbox">
                 <?php
-                
+                foreach ($players as $player){
+                    if($player["age"] < $minAge || $minAge === NULL){
+                        $minAge = $player["age"];
+                        $younger = $player["name"];
+                    }
+                }
+                echo "<p>Le plus jeune est $younger et il a $minAge ans.</p>";
                 ?>
             </div>
         </section>
