@@ -155,7 +155,10 @@
             <p class="exercice-txt">En réutilisant les scores de la question pécédente, afficher le nom du joueur ayant obtenu le plus grand score.</p>
             <div class="exercice-sandbox">
                 <?php
-                
+                    $maxScore =  max(array_values($scores));
+                    foreach ($scores as $player => $score){
+                        if($score === $maxScore) echo $player;
+                    }
                 ?>
             </div>
         </section>
