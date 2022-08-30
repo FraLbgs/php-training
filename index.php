@@ -96,6 +96,18 @@
             <h2 class="exercice-ttl">Question 5</h2>
             <p class="exercice-txt">Affichez dans une liste HTML le nom des produits de la question 2 qui sont présents dans la phrase : "<?=$text1?>"</p>
             <div class="exercice-sandbox">
+                <ul>
+            <?php
+            $products = [$nameProduct1,$nameProduct2,$nameProduct3];
+            $tab = [];
+            foreach ($products as $product){
+                if(str_contains($text1, $product)){
+                    echo "<li>$product</li>";
+                }
+            }
+
+            ?>
+                </ul>
 
             </div>
         </section>
