@@ -169,7 +169,18 @@
             <h2 class="exercice-ttl">Question 8</h2>
             <p class="exercice-txt">Affichez le prénom du joueur le plus long en nombre de caractères.</p>
             <div class="exercice-sandbox">
-                
+            <?php
+                $playersName = array_keys($scores);
+                $maxLength = 0;
+                foreach ($playersName as $player){
+                    if(strlen($player) > $maxLength){
+                        $maxLength = strlen($player);
+                        $maxLengthPlayer = $player;
+                    }
+                }
+                echo $maxLengthPlayer;
+            ?>    
+
             </div>
         </section>
 
