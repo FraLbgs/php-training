@@ -130,6 +130,20 @@
                 $namePlayer5 = "Kevin";
                 $scorePlayer5 = 103;
 
+                $scores = [
+                    $namePlayer1 => $scorePlayer1,
+                    $namePlayer2 => $scorePlayer2,
+                    $namePlayer3 => $scorePlayer3,
+                    $namePlayer4 => $scorePlayer4,
+                    $namePlayer5 => $scorePlayer5
+                ];
+
+                foreach ($scores as $player => $score){
+                    if($score >=50 && $score <=150){
+                        echo $player." " ;
+                    }
+                }
+
                 ?>
             </div>
         </section>
@@ -140,7 +154,9 @@
             <h2 class="exercice-ttl">Question 7</h2>
             <p class="exercice-txt">En réutilisant les scores de la question pécédente, afficher le nom du joueur ayant obtenu le plus grand score.</p>
             <div class="exercice-sandbox">
+                <?php
                 
+                ?>
             </div>
         </section>
 
