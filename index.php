@@ -99,7 +99,6 @@
                 <ul>
             <?php
             $products = [$nameProduct1,$nameProduct2,$nameProduct3];
-            $tab = [];
             foreach ($products as $product){
                 if(str_contains($text1, $product)){
                     echo "<li>$product</li>";
