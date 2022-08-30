@@ -196,9 +196,18 @@
                 <li>Kevin : 31 ans</li>
             </ul>
             <p class="exercice-txt">Afficher la valeur de cette variable avec tous les détails.</p>
-            <div class="exercice-sandbox">
-                
-            </div>
+            <pre class="exercice-sandbox">
+                <?php
+                $players = [
+                    ["name" => "Tim", "age" => 25, "points" => 67],
+                    ["name" => "Morgan", "age" => 34, "points" => 198],
+                    ["name" => "Hamed", "age" => 27, "points" => 21],
+                    ["name" => "Camille", "age" => 47, "points" => 134],
+                    ["name" => "Kevin", "age" => 31, "points" => 103]
+                    ];
+                    var_dump($players)
+                    ?>
+            </pre>
         </section>
 
         <!-- QUESTION 10 -->
@@ -206,7 +215,9 @@
             <h2 class="exercice-ttl">Question 10</h2>
             <p class="exercice-txt">Afficher le prénom et l'âge du joueur le plus jeune dans une phrase dans une balise HTML P.</p>
             <div class="exercice-sandbox">
-
+                <?php
+                
+                ?>
             </div>
         </section>
 
