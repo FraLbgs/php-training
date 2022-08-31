@@ -77,8 +77,7 @@ $fruits = ["fraise", "banane", "pomme", "cerise", "abricot", "pêche", "ananas",
             <ul>
             <?php
             foreach ($fruits as $num => $fruit){
-                if($num %2 === 1) continue;
-                echo "<li>$num : $fruit</li>";
+                if($num %2 === 0) echo "<li>$num : $fruit</li>";
             }
             ?>
             </ul>
@@ -91,7 +90,8 @@ $fruits = ["fraise", "banane", "pomme", "cerise", "abricot", "pêche", "ananas",
             <p class="exercice-txt">Afficher un fruit aléatoire du tableau</p>
             <div class="exercice-sandbox">
                 <?php
-                echo $fruits[rand(0,sizeof($fruits)-1)];
+                // echo $fruits[rand(0,sizeof($fruits)-1)]; ou
+                echo $fruits[array_rand($fruits)]; 
                 ?>
             </div>
         </section>

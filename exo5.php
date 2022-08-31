@@ -72,9 +72,9 @@ try {
         </section>
 
 
-        <!-- QUESTION 5 -->
+        <!-- QUESTION 4 -->
         <section id="question5" class="exercice">
-            <h2 class="exercice-ttl">Question 5</h2>
+            <h2 class="exercice-ttl">Question 4</h2>
             <p class="exercice-txt">Si l'URL de la page appelée comporte l'identifiant d'une série, alors afficher toutes les informations de la série.</p>
             <p class="exercice-txt">Si l'identifiant ne correspond à aucune série, afficher un message d'erreur.</p>
             <div class="exercice-sandbox">
