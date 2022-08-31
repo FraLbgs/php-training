@@ -169,17 +169,14 @@
             <p class="exercice-txt">Affichez le prénom du joueur le plus long en nombre de caractères.</p>
             <div class="exercice-sandbox">
             <?php
-                $playersName = array_keys($scores);
-                $maxLength = 0;
-                foreach ($playersName as $player){
-                    if(strlen($player) > $maxLength){
+                foreach ($scores as $player => $score){
+                    if(strlen($player) > $maxLength || $maxLength === NULL){
                         $maxLength = strlen($player);
                         $maxLengthPlayer = $player;
                     }
                 }
                 echo $maxLengthPlayer;
             ?>    
-
             </div>
         </section>
 
@@ -218,10 +215,10 @@
                 foreach ($players as $player){
                     if($player["age"] < $minAge || $minAge === NULL){
                         $minAge = $player["age"];
-                        $younger = $player["name"];
+                        $youngest = $player["name"];
                     }
                 }
-                echo "<p>Le plus jeune est $younger et il a $minAge ans.</p>";
+                echo "<p>Le plus jeune est $youngest et il a $minAge ans.</p>";
                 ?>
             </div>
         </section>
