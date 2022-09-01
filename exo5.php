@@ -82,11 +82,26 @@ try {
         <!-- QUESTION 3 -->
         <section class="exercice">
             <h2 class="exercice-ttl">Question 3</h2>
-            <p class="exercice-txt">Afficher la liste de toutes les séries avec l'image principale, le titre, l'équipe de création et la liste des acteurs</p>
-            <p class="exercice-txt">L'image et le titre de la série sont des liens menant à cette page avec en paramètre "serie", l'identifiant de la série</p>
-            <p class="exercice-txt">Afficher une seule série par ligne sur les plus petits écrans, 2 séries par ligne sur les écrans intermédiaires et 4 séries par ligne sur un écran d'ordinateur.</p>
+            <p class="exercice-txt">Afficher la liste de toutes les séries avec l'image principale, 
+                le titre, l'équipe de création et la liste des acteurs</p>
+            <p class="exercice-txt">L'image et le titre de la série sont des liens menant à cette 
+                page avec en paramètre "serie", l'identifiant de la série</p>
+            <p class="exercice-txt">Afficher une seule série par ligne sur les plus petits écrans, 
+                2 séries par ligne sur les écrans intermédiaires et 4 séries par ligne sur un écran 
+                d'ordinateur.</p>
             <div class="exercice-sandbox">
+                <div id="link" class='serie-list'>
+                    <?php
+                    // var_dump($listSeries);
+                    foreach($series as $serie){
+                        echo "<div class='serie'><a class='ser-link' href='#link/?serie=".$serie["id"]."'><img class='img' src='".$serie["image"]."' alt='title' ></a>
+                        <p class='ser-title'><span class='title'>Title</span> : <a class='ser-link' href='#link/?serie=".$serie["id"]."'>${serie['name']}</a></p>
+                        <p class='creators'><span class='title'>Created by</span> : ".implode(", ", $serie["createdBy"])."</p>
+                        <p class='actors'><span class='title'>Actors</span> : ".implode(", ", $serie["actors"])."</p> </div>";
+                    }
 
+                    ?>
+                </div>
             </div>
         </section>
 
@@ -96,9 +111,11 @@ try {
             <h2 class="exercice-ttl">Question 4</h2>
             <p class="exercice-txt">Si l'URL de la page appelée comporte l'identifiant d'une série, alors afficher toutes les informations de la série.</p>
             <p class="exercice-txt">Si l'identifiant ne correspond à aucune série, afficher un message d'erreur.</p>
-            <div class="exercice-sandbox">
-                
-            </div>
+            <pre class="exercice-sandbox">
+                <?php
+                // var_dump($series);
+                ?>
+            </pre>
         </section>
 
     </div>
