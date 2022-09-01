@@ -52,6 +52,7 @@ $prices = [3, 2, 2, 5, 8];
                 foreach ($prices as $num => $price){
                     $prices[$num]++;
                 } 
+                // $prices = array_map(fn($n) => ++$n, $prices);
                 var_dump($prices);
                 ?>
             </div>
@@ -79,6 +80,8 @@ $prices = [3, 2, 2, 5, 8];
                 foreach ($store as $fruit => $price){
                     if($price < 4) echo "<li>$fruit</li>";
                 }
+
+                // array_filter($store, fn($p) => $p < 4);
                 ?>
                 </ul>
             </div>
@@ -112,6 +115,7 @@ $prices = [3, 2, 2, 5, 8];
                     $total+=$price;
                     $cart[]=$fruit;
                 }
+                else break;
             }
             var_dump($cart);
             ?>
@@ -125,7 +129,7 @@ $prices = [3, 2, 2, 5, 8];
             <div class="exercice-sandbox">
             <?php
             $total*=1.18;
-            var_dump($total);
+            echo $total;
             ?>
             </div>
         </section>

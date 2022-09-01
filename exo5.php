@@ -45,9 +45,18 @@ try {
         <section class="exercice">
             <h2 class="exercice-ttl">Question 1</h2>
             <p class="exercice-txt">Récupérer dans un tableau puis affichez l'ensemble des plateformes de diffusion des séries. Afficher les par ordre alphabétique.</p>
-            <div class="exercice-sandbox">
-                
-            </div>
+            <pre class="exercice-sandbox">
+                <?php
+                // var_dump($series);
+                $plateforme = [];
+                foreach($series as $serie){
+                    $plateforme[] = $serie["availableOn"];
+                }
+                $plateforme = array_unique($plateforme);
+                sort($plateforme);
+                var_dump($plateforme);
+                ?>
+            </pre>
         </section>
 
 
@@ -55,9 +64,19 @@ try {
         <section class="exercice">
             <h2 class="exercice-ttl">Question 2</h2>
             <p class="exercice-txt">Récupérer dans un tableau puis affichez l'ensemble des styles de séries. Afficher les par ordre alphabétique.</p>
-            <div class="exercice-sandbox">
-                
-            </div>
+            <pre class="exercice-sandbox">
+            <?php
+                $styles = [];
+                foreach($series as $serie){
+                    foreach($serie["styles"] as $style){
+                        $styles[] = $style;
+                    }
+                }
+                $styles = array_unique($styles);
+                sort($styles);
+                var_dump($styles);
+                ?>
+            </pre>
         </section>
 
         <!-- QUESTION 3 -->
