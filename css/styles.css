@@ -1,0 +1,54 @@
+
+.serie{
+    text-align: center;
+}
+
+.title{
+    color: red;
+}
+
+.img{
+    width: 200px;
+}
+
+.ser-link{
+    color: black;
+}
+
+@media screen and (min-width: 550px){
+
+    .serie-list{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .serie{
+        width: 50%;
+        padding: 5px;
+        border: 1px rgba(20,20,20, 0.2) solid;
+    }
+
+    .img{
+        width: 150px;
+    }
+
+    
+}
+
+@media screen and (min-width: 900px){
+
+    .serie-list{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .serie{
+        width: 25%;
+        padding: 5px;
+    }
+
+    .img{
+        width: 150px;
+    }
+    
+}
