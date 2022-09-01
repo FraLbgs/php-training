@@ -94,8 +94,8 @@ try {
                     <?php
                     // var_dump($listSeries);
                     foreach($series as $serie){
-                        echo "<div class='serie'><a class='ser-link' href='#link/?serie=".$serie["id"]."'><img class='img' src='".$serie["image"]."' alt='title' ></a>
-                        <p class='ser-title'><span class='title'>Title</span> : <a class='ser-link' href='#link/?serie=".$serie["id"]."'>${serie['name']}</a></p>
+                        echo "<div class='serie'><a class='ser-link' href='?serie=".$serie["id"]."#link'><img class='img' src='".$serie["image"]."' alt='title' ></a>
+                        <p class='ser-title'><span class='title'>Title</span> : <a class='ser-link' href='?serie=".$serie["id"]."#link'>${serie['name']}</a></p>
                         <p class='creators'><span class='title'>Created by</span> : ".implode(", ", $serie["createdBy"])."</p>
                         <p class='actors'><span class='title'>Actors</span> : ".implode(", ", $serie["actors"])."</p> </div>";
                     }
@@ -111,11 +111,55 @@ try {
             <h2 class="exercice-ttl">Question 4</h2>
             <p class="exercice-txt">Si l'URL de la page appelée comporte l'identifiant d'une série, alors afficher toutes les informations de la série.</p>
             <p class="exercice-txt">Si l'identifiant ne correspond à aucune série, afficher un message d'erreur.</p>
-            <pre class="exercice-sandbox">
+            <div class="exercice-sandbox">
                 <?php
-                // var_dump($series);
+                // var_dump($_GET["serie"]);
+                $listIds=[];
+                foreach($series as $serie){
+                    if($_GET["serie"] == $serie["id"]){
+                        $ongoing = $serie["ongoing"] ? "En cours" : "Terminé";
+                        echo "<p><img class='img' src='".$serie["image"]."' alt='title' ></p>
+                                <p>Id de la série : ".$serie["id"]."</p>
+                                <p>Nom de la série : ".$serie["name"]."</p>
+                                <p>Année de sortie de la série : ".$serie["launchYear"]."</p>
+                                <p>Pays d'origine : ".$serie["country"]."</p>
+                                <p>Disponible sur la plateforme : ".$serie["availableOn"]."</p>
+                                <p>Style(s) de la série : ".implode(", ",$serie["styles"])."</p>
+                                <p>Série crée par : ".implode(", ",$serie["createdBy"])."</p>
+                                <p>Acteurs : ".implode(", ",$serie["actors"])."</p>
+                                <p>Durée des épisodes : ".$serie["episodeDurationInMinutes"]." minutes</p>
+                                <p>Nombre de saisons : ".$serie["numberOfSeasons"]."</p>
+                                <p>Nombre d'épisodes : ".$serie["numberOfEpisods"]."</p>
+                                <p>Production : ".$ongoing."</p>";
+                        $inSerie= true;
+                        break;
+                    }
+                }
+                if(!$inSerie) echo "Cette série n'existe pas.";
                 ?>
-            </pre>
+            </div>
+        </section>
+
+
+        <!-- QUESTION 5 -->
+        <section id="question5" class="exercice">
+            <h2 class="exercice-ttl">Question 5</h2>
+            <p class="exercice-txt">Globaliser l'entête et le pied des pages de ce mini-site.</p>
+            <p class="exercice-txt">S'assurer de conserver les titres des pages et l'affichage dynamique du menu.</p>
+            <div class="exercice-sandbox">
+
+            </div>
+        </section>
+
+
+        <!-- QUESTION 6 -->
+        <section id="question5" class="exercice">
+            <h2 class="exercice-ttl">Question 6</h2>
+            <p class="exercice-txt">Créer un tableau listant les pages du site.</p>
+            <p class="exercice-txt">Créer une fonction générant le code HTML du menu du site.</p>
+            <div class="exercice-sandbox">
+
+            </div>
         </section>
 
     </div>
