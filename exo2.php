@@ -175,6 +175,6 @@ $fruits = ["fraise", "banane", "pomme", "cerise", "abricot", "pêche", "ananas",
             </div>
         </section>
     </div>
-<div class="copyright">© Guillaume Belleuvre, 2022 - DWWM Le Havre</div>
+    <?php include_once "footer.php" ?>
 </body>
 </html>

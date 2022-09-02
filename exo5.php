@@ -165,6 +165,6 @@ try {
         </section>
 
     </div>
-<div class="copyright">© Guillaume Belleuvre, 2022 - DWWM Le Havre</div>
+    <?php include_once "footer.php" ?>
 </body>
 </html>

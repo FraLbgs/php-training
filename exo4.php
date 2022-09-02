@@ -202,6 +202,6 @@ $arrayB = [85, "toi", 95, "la", 65, 94, 85, "avec", 37, "chat"];
             </div>
         </section>
     </div>
-<div class="copyright">© Guillaume Belleuvre, 2022 - DWWM Le Havre</div>
+<?php include_once "footer.php" ?>
 </body>
 </html>
