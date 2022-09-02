@@ -55,15 +55,15 @@ $arrayB = [85, "toi", 95, "la", 65, 94, 85, "avec", 37, "chat"];
             <p class="exercice-txt">Déclarer une fonction qui prend en paramètre un tableau d'entiers et retourne uniquement les valeurs paires. Afficher les valeurs du tableau sous la forme d'une liste HTML.</p>
             <div class="exercice-sandbox">
             <?php
-            function giveOddNumbers(array $array) : array {
+            function getEvenNumbers(array $array) : array {
                 $res = [];
                 foreach($array as $value){
-                    if($value%2 ===0)
+                    if($value%2 === 0)
                     $res[]=$value;
                 }
                 return $res;
             }
-            echo arrayToList(giveOddNumbers($array));
+            echo arrayToList(getEvenNumbers($array));
             ?>
             </div>
         </section>
@@ -74,7 +74,7 @@ $arrayB = [85, "toi", 95, "la", 65, 94, 85, "avec", 37, "chat"];
             <p class="exercice-txt">Déclarer une fonction qui prend en paramètre un tableau d'entiers et retourne uniquement les entiers d'index pair</p>
             <div class="exercice-sandbox">
             <?php
-            function giveOddIndex(array $array) : array {
+            function getEvenIndex(array $array) : array {
                 $res = [];
                 foreach($array as $num => $value){
                     if($num%2 === 0)
@@ -82,7 +82,7 @@ $arrayB = [85, "toi", 95, "la", 65, 94, 85, "avec", 37, "chat"];
                 }
                 return $res;
             }
-            echo arrayToList(giveOddIndex($array));
+            echo arrayToList(getEvenIndex($array));
             ?>
             </div>
         </section>
@@ -93,10 +93,10 @@ $arrayB = [85, "toi", 95, "la", 65, 94, 85, "avec", 37, "chat"];
             <p class="exercice-txt">Déclarer une fonction qui prend en paramètre un tableau d'entiers. La fonction doit retourner les valeurs du tableau mulipliées par 2.</p>
             <div class="exercice-sandbox">
             <?php
-            function giveDoubleValues(array $array) : array {
+            function getDoubleValues(array $array) : array {
                 return array_map(fn($f) => $f*2, $array);
             }
-            echo arrayToList(giveDoubleValues($array));
+            echo arrayToList(getDoubleValues($array));
             ?>
             </div>
         </section>
@@ -107,10 +107,10 @@ $arrayB = [85, "toi", 95, "la", 65, 94, 85, "avec", 37, "chat"];
             <p class="exercice-txt">Déclarer une fonction qui prend en paramètre un tableau d'entiers et un entier. La fonction doit retourner les valeurs du tableau divisées par le second paramètre</p>
             <div class="exercice-sandbox">
             <?php
-            function giveArrayDivided(array $array, int $a) : array {
+            function getArrayDivided(array $array, int $a) : array {
                 return array_map(fn($f) => $f/$a, $array);
             }
-            echo arrayToList(giveArrayDivided($array, 2));
+            echo arrayToList(getArrayDivided($array, 2));
             ?>
             </div>
         </section>
@@ -157,14 +157,15 @@ $arrayB = [85, "toi", 95, "la", 65, 94, 85, "avec", 37, "chat"];
             <p class="exercice-txt">Déclarer une fonction qui prend en paramètre 2 tableaux et retourne un tableau des valeurs du premier tableau qui ne sont pas dans le second</p>
             <div class="exercice-sandbox">
             <?php
-            // function inAButNotInB(array $array, array $array2) : array {
-            //     $res = [];
-            //     foreach($array as $value){
-            //         if(!in_array($value, $array2)) $res[]=$value;
-            //     }
-            //     return $res;
-            // }
-            // echo arrayToList(inAButNotInB($arrayA, $arrayB));
+            function inAButNotInB(array $array, array $array2, bool $unique = false) : array {
+                $res = [];
+                foreach($array as $value){
+                    if(!in_array($value, $array2)) $res[]=$value;
+                }
+                if($unique) $res = uniqueValues($res);
+                return $res;
+            }
+            echo arrayToList(inAButNotInB($arrayA, $arrayB));
             ?>
             </div>
         </section>
@@ -176,15 +177,6 @@ $arrayB = [85, "toi", 95, "la", 65, 94, 85, "avec", 37, "chat"];
             <p class="exercice-txt">Réécrire la fonction précédente pour lui ajouter un paramètre booléen facultatif. Si celui-ci est à true, le tableau retourné sera sans doublons</p>
             <div class="exercice-sandbox">
             <?php
-            function inAButNotInB(array $array, array $array2, bool $unique = false) : array {
-                $res = [];
-                foreach($array as $value){
-                    if(!in_array($value, $array2)) $res[]=$value;
-                }
-                if($unique) $res = uniqueValues($res);
-                return $res;
-            }
-            // echo arrayToList(inAButNotInB($arrayA, $arrayB));
             echo arrayToList(inAButNotInB($arrayA, $arrayB, true));
             ?>
             </div>
@@ -197,7 +189,7 @@ $arrayB = [85, "toi", 95, "la", 65, 94, 85, "avec", 37, "chat"];
             <p class="exercice-txt">Déclarer une fonction qui prend en paramètre un tableau et un entier et retourne les n premiers éléments du tableau.</p>
             <div class="exercice-sandbox">
             <?php
-            function giveFirstValues(array $array, int $a) : array {
+            function getFirstValues(array $array, int $a) : array {
                 $res = [];
                 foreach($array as $num => $value){
                     $res[]=$value;
@@ -205,7 +197,7 @@ $arrayB = [85, "toi", 95, "la", 65, 94, 85, "avec", 37, "chat"];
                 }
                 return $res;
             }
-            echo arrayToList(giveFirstValues($array, 5));
+            echo arrayToList(getFirstValues($array, 5));
             ?>
             </div>
         </section>

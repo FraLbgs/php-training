@@ -115,27 +115,29 @@ try {
                 <?php
                 // var_dump($_GET["serie"]);
                 $listIds=[];
-                foreach($series as $serie){
-                    if($_GET["serie"] == $serie["id"]){
-                        $ongoing = $serie["ongoing"] ? "En cours" : "Terminé";
-                        echo "<p><img class='img' src='".$serie["image"]."' alt='title' ></p>
-                                <p>Id de la série : ".$serie["id"]."</p>
-                                <p>Nom de la série : ".$serie["name"]."</p>
-                                <p>Année de sortie de la série : ".$serie["launchYear"]."</p>
-                                <p>Pays d'origine : ".$serie["country"]."</p>
-                                <p>Disponible sur la plateforme : ".$serie["availableOn"]."</p>
-                                <p>Style(s) de la série : ".implode(", ",$serie["styles"])."</p>
-                                <p>Série crée par : ".implode(", ",$serie["createdBy"])."</p>
-                                <p>Acteurs : ".implode(", ",$serie["actors"])."</p>
-                                <p>Durée des épisodes : ".$serie["episodeDurationInMinutes"]." minutes</p>
-                                <p>Nombre de saisons : ".$serie["numberOfSeasons"]."</p>
-                                <p>Nombre d'épisodes : ".$serie["numberOfEpisods"]."</p>
-                                <p>Production : ".$ongoing."</p>";
-                        $inSerie= true;
-                        break;
+                if(isset($_GET["serie"])){
+                    foreach($series as $serie){
+                        if($_GET["serie"] == $serie["id"]){
+                            $ongoing = $serie["ongoing"] ? "En cours" : "Terminé";
+                            echo "<p><img class='img' src='".$serie["image"]."' alt='title' ></p>
+                                    <p>Id de la série : ".$serie["id"]."</p>
+                                    <p>Nom de la série : ".$serie["name"]."</p>
+                                    <p>Année de sortie de la série : ".$serie["launchYear"]."</p>
+                                    <p>Pays d'origine : ".$serie["country"]."</p>
+                                    <p>Disponible sur la plateforme : ".$serie["availableOn"]."</p>
+                                    <p>Style(s) de la série : ".implode(", ",$serie["styles"])."</p>
+                                    <p>Série crée par : ".implode(", ",$serie["createdBy"])."</p>
+                                    <p>Acteurs : ".implode(", ",$serie["actors"])."</p>
+                                    <p>Durée des épisodes : ".$serie["episodeDurationInMinutes"]." minutes</p>
+                                    <p>Nombre de saisons : ".$serie["numberOfSeasons"]."</p>
+                                    <p>Nombre d'épisodes : ".$serie["numberOfEpisods"]."</p>
+                                    <p>Production : ".$ongoing."</p>";
+                            $inSerie= true;
+                            break;
+                        }
                     }
+                    if(!$inSerie) echo "Cette série n'existe pas.";
                 }
-                if(!$inSerie) echo "Cette série n'existe pas.";
                 ?>
             </div>
         </section>
