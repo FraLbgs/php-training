@@ -1,29 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <title>Introduction PHP - Exo 5</title>
-</head>
-<body class="dark-template">
-    <div class="container">
-        <header class="header">
-            <h1 class="main-ttl">Introduction PHP - Exo 5</h1>
-            <nav class="main-nav">
-                <ul class="main-nav-list">
-                    <li><a class="main-nav-link" href="index.php">Entrainement</a></li>
-                    <li><a class="main-nav-link" href="exo2.php">Donnez moi des fruits</a></li>
-                    <li><a class="main-nav-link" href="exo3.php">Donnez moi de la thune</a></li>
-                    <li><a class="main-nav-link" href="exo4.php">Des fonctions et des tableaux</a></li>
-                    <li><a class="main-nav-link active" href="exo5.php">Netflix</a></li>
-                </ul>
-            </nav>
-        </header>
-
 <?php
+            function arrayToList(array $array) : string {
+                $res = "<ul>";
+                foreach($array as $value){
+                    $res.= "<li>$value</li>";
+                }
+                return $res."</ul>";
+            }
+
+include_once "header.php";
 
 // Json file
 try {
@@ -45,7 +29,7 @@ try {
         <section class="exercice">
             <h2 class="exercice-ttl">Question 1</h2>
             <p class="exercice-txt">Récupérer dans un tableau puis affichez l'ensemble des plateformes de diffusion des séries. Afficher les par ordre alphabétique.</p>
-            <pre class="exercice-sandbox">
+            <div class="exercice-sandbox">
                 <?php
                 // var_dump($series);
                 $plateforme = [];
@@ -54,9 +38,10 @@ try {
                 }
                 $plateforme = array_unique($plateforme);
                 sort($plateforme);
-                var_dump($plateforme);
+                // var_dump($plateforme);
+                echo arrayToList($plateforme);
                 ?>
-            </pre>
+            </div>
         </section>
 
 
@@ -64,7 +49,7 @@ try {
         <section class="exercice">
             <h2 class="exercice-ttl">Question 2</h2>
             <p class="exercice-txt">Récupérer dans un tableau puis affichez l'ensemble des styles de séries. Afficher les par ordre alphabétique.</p>
-            <pre class="exercice-sandbox">
+            <div class="exercice-sandbox">
             <?php
                 $styles = [];
                 foreach($series as $serie){
@@ -74,9 +59,9 @@ try {
                 }
                 $styles = array_unique($styles);
                 sort($styles);
-                var_dump($styles);
+                echo arrayToList($styles);
                 ?>
-            </pre>
+            </div>
         </section>
 
         <!-- QUESTION 3 -->
@@ -92,13 +77,28 @@ try {
             <div class="exercice-sandbox">
                 <div id="link" class='serie-list'>
                     <?php
-                    // var_dump($listSeries);
-                    foreach($series as $serie){
-                        echo "<div class='serie'><a class='ser-link' href='?serie=".$serie["id"]."#link'><img class='img' src='".$serie["image"]."' alt='title' ></a>
-                        <p class='ser-title'><span class='title'>Title</span> : <a class='ser-link' href='?serie=".$serie["id"]."#link'>${serie['name']}</a></p>
-                        <p class='creators'><span class='title'>Created by</span> : ".implode(", ", $serie["createdBy"])."</p>
-                        <p class='actors'><span class='title'>Actors</span> : ".implode(", ", $serie["actors"])."</p> </div>";
+                    function getTitle(array $serie) : string {
+                        return "<a class='ser-link' href='?serie=".$serie["id"]."#link'><img class='img' src='".$serie["image"]."' alt='title' ></a>";
                     }
+                    function getCreators(array $serie) : string {
+                        return "<p class='ser-title'><span class='title'>Title</span> : <a class='ser-link' href='?serie=".$serie["id"]."#link'>${serie['name']}</a></p>
+                        <p class='creators'><span class='title'>Created by</span> : ".implode(", ", $serie["createdBy"])."</p>";
+                    }
+                    function getActors(array $serie) : string {
+                        return "<p class='actors'><span class='title'>Actors</span> : ".implode(", ", $serie["actors"])."</p>";
+                    }
+                    foreach($series as $serie){
+                        echo "<div class='serie'>".getTitle($serie).
+                        getCreators($serie).
+                        getActors($serie)."</div>";
+                    }
+
+                    // foreach($series as $serie){
+                    //     echo "<div class='serie'><a class='ser-link' href='?serie=".$serie["id"]."#link'><img class='img' src='".$serie["image"]."' alt='title' ></a>
+                    //     <p class='ser-title'><span class='title'>Title</span> : <a class='ser-link' href='?serie=".$serie["id"]."#link'>${serie['name']}</a></p>
+                    //     <p class='creators'><span class='title'>Created by</span> : ".implode(", ", $serie["createdBy"])."</p>
+                    //     <p class='actors'><span class='title'>Actors</span> : ".implode(", ", $serie["actors"])."</p> </div>";
+                    // }
 
                     ?>
                 </div>
@@ -148,9 +148,9 @@ try {
             <h2 class="exercice-ttl">Question 5</h2>
             <p class="exercice-txt">Globaliser l'entête et le pied des pages de ce mini-site.</p>
             <p class="exercice-txt">S'assurer de conserver les titres des pages et l'affichage dynamique du menu.</p>
-            <div class="exercice-sandbox">
-
-            </div>
+            <pre class="exercice-sandbox">
+                <?= print_r($_SERVER) ?>
+            </pre>
         </section>
 
 
@@ -159,9 +159,13 @@ try {
             <h2 class="exercice-ttl">Question 6</h2>
             <p class="exercice-txt">Créer un tableau listant les pages du site.</p>
             <p class="exercice-txt">Créer une fonction générant le code HTML du menu du site.</p>
-            <div class="exercice-sandbox">
-
-            </div>
+            <pre class="exercice-sandbox">
+                <?php
+                // $path_parts = pathinfo($_SERVER["SCRIPT_NAME"]);
+                print_r(pathinfo($_SERVER["SCRIPT_NAME"])["filename"]); // Affiche Array ( [dirname] => /forum [basename] => index.php [extension] => php )
+                // print_r($_SERVER["SCRIPT_NAME"]);
+                ?>
+            </pre>
         </section>
 
     </div>
