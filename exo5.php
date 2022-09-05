@@ -1,12 +1,14 @@
 <?php
-            function arrayToList(array $array) : string {
-                $res = "<ul>";
-                foreach($array as $value){
-                    $res.= "<li>$value</li>";
-                }
-                return $res."</ul>";
-            }
 
+function arrayToList(array $array) : string {
+    $res = "<ul>";
+    foreach($array as $value){
+        $res.= "<li>$value</li>";
+    }
+    return $res."</ul>";
+}
+
+$title="";
 include_once "header.php";
 
 // Json file
@@ -75,22 +77,31 @@ try {
                 2 séries par ligne sur les écrans intermédiaires et 4 séries par ligne sur un écran 
                 d'ordinateur.</p>
             <div class="exercice-sandbox">
-                <div id="link" class='serie-list'>
+                <ul id="link" class='serie-list'>
                     <?php
+                    function getLink(array $serie) : string {
+                        return "?serie=".$serie["id"]."#link";
+                    }
+                    function getSpanTitle(string $s) : string {
+                        return "<span class='title'>$s</span>";
+                    }
+                    function getImage(array $serie) : string {
+                        return "<a class='ser-link' href='".getLink($serie)."'><img class='img' src='".$serie["image"]."' alt='title' ></a>";
+                    }
                     function getTitle(array $serie) : string {
-                        return "<a class='ser-link' href='?serie=".$serie["id"]."#link'><img class='img' src='".$serie["image"]."' alt='title' ></a>";
+                        return "<p class='ser-title'>".getSpanTitle("Titre")." : <a class='ser-link' href='".getLink($serie)."'>${serie['name']}</a></p>";
                     }
                     function getCreators(array $serie) : string {
-                        return "<p class='ser-title'><span class='title'>Title</span> : <a class='ser-link' href='?serie=".$serie["id"]."#link'>${serie['name']}</a></p>
-                        <p class='creators'><span class='title'>Created by</span> : ".implode(", ", $serie["createdBy"])."</p>";
+                        return "<p class='creators'>".getSpanTitle("Créée par")." : ".implode(", ", $serie["createdBy"])."</p>";
                     }
                     function getActors(array $serie) : string {
-                        return "<p class='actors'><span class='title'>Actors</span> : ".implode(", ", $serie["actors"])."</p>";
+                        return "<p class='actors'>".getSpanTitle("Acteurs")." : ".implode(", ", $serie["actors"])."</p>";
                     }
                     foreach($series as $serie){
-                        echo "<div class='serie'>".getTitle($serie).
+                        echo "<li class='serie'>".getImage($serie).
+                        getTitle($serie).
                         getCreators($serie).
-                        getActors($serie)."</div>";
+                        getActors($serie)."</li>";
                     }
 
                     // foreach($series as $serie){
@@ -101,7 +112,7 @@ try {
                     // }
 
                     ?>
-                </div>
+                </ul>
             </div>
         </section>
 
@@ -162,7 +173,7 @@ try {
             <pre class="exercice-sandbox">
                 <?php
                 // $path_parts = pathinfo($_SERVER["SCRIPT_NAME"]);
-                print_r(pathinfo($_SERVER["SCRIPT_NAME"])["filename"]); // Affiche Array ( [dirname] => /forum [basename] => index.php [extension] => php )
+                var_dump(pathinfo($_SERVER["SCRIPT_NAME"])["basename"]); // Affiche Array ( [dirname] => /forum [basename] => index.php [extension] => php )
                 // print_r($_SERVER["SCRIPT_NAME"]);
                 ?>
             </pre>

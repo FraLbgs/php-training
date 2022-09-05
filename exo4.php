@@ -1,4 +1,6 @@
-<?= include_once "header.php";
+<?php
+$title="";
+include_once "header.php";
 
 $array = [12, 65, 95, 41, 85, 63, 71, 64];
 

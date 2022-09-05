@@ -1,4 +1,6 @@
-<?= include_once "header.php";
+<?php
+$title="";
+include_once "header.php";
 
 $fruits = ["fraise", "banane","pomme", "cerise", "ananas"];
 

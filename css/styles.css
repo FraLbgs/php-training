@@ -1,3 +1,8 @@
+.exercice-sandbox ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
 
 .serie{
     text-align: center;

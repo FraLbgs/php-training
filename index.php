@@ -1,4 +1,7 @@
-<?= include_once "header.php"; ?>
+<?php
+$title="";
+include_once "header.php";
+?>
 
         <!-- QUESTION 1 -->
         <section class="exercice">
