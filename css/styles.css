@@ -1,10 +1,10 @@
-.exercice-sandbox ul {
-    list-style-type: none;
+.exercice-sandbox .serie{
+    list-style: none;
     padding-left: 0;
 }
 
 
-.serie{
+.serie-list{
     text-align: center;
 }
 
@@ -22,12 +22,12 @@
 
 @media screen and (min-width: 550px){
 
-    .serie-list{
+    .serie{
         display: flex;
         flex-wrap: wrap;
     }
 
-    .serie{
+    .serie-list{
         width: 50%;
         padding: 5px;
         border: 1px rgba(20,20,20, 0.2) solid;
@@ -42,12 +42,12 @@
 
 @media screen and (min-width: 900px){
 
-    .serie-list{
+    .serie{
         display: flex;
         flex-wrap: wrap;
     }
 
-    .serie{
+    .serie-list{
         width: 25%;
         padding: 5px;
     }

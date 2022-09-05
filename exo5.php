@@ -77,7 +77,7 @@ try {
                 2 séries par ligne sur les écrans intermédiaires et 4 séries par ligne sur un écran 
                 d'ordinateur.</p>
             <div class="exercice-sandbox">
-                <ul id="link" class='serie-list'>
+                <ul id="link" class='serie'>
                     <?php
                     function getLink(array $serie) : string {
                         return "?serie=".$serie["id"]."#link";
@@ -98,7 +98,7 @@ try {
                         return "<p class='actors'>".getSpanTitle("Acteurs")." : ".implode(", ", $serie["actors"])."</p>";
                     }
                     foreach($series as $serie){
-                        echo "<li class='serie'>".getImage($serie).
+                        echo "<li class='serie-list'>".getImage($serie).
                         getTitle($serie).
                         getCreators($serie).
                         getActors($serie)."</li>";
@@ -160,7 +160,12 @@ try {
             <p class="exercice-txt">Globaliser l'entête et le pied des pages de ce mini-site.</p>
             <p class="exercice-txt">S'assurer de conserver les titres des pages et l'affichage dynamique du menu.</p>
             <pre class="exercice-sandbox">
-                <?= print_r($_SERVER) ?>
+                <?php
+                // print_r($_SERVER);
+                // $path_parts = pathinfo($_SERVER["SCRIPT_NAME"]);
+                // var_dump(pathinfo($_SERVER["SCRIPT_NAME"])["basename"]); // Affiche Array ( [dirname] => /forum [basename] => index.php [extension] => php )
+                // print_r($_SERVER["SCRIPT_NAME"]);
+                ?>
             </pre>
         </section>
 
@@ -172,9 +177,6 @@ try {
             <p class="exercice-txt">Créer une fonction générant le code HTML du menu du site.</p>
             <pre class="exercice-sandbox">
                 <?php
-                // $path_parts = pathinfo($_SERVER["SCRIPT_NAME"]);
-                var_dump(pathinfo($_SERVER["SCRIPT_NAME"])["basename"]); // Affiche Array ( [dirname] => /forum [basename] => index.php [extension] => php )
-                // print_r($_SERVER["SCRIPT_NAME"]);
                 ?>
             </pre>
         </section>
