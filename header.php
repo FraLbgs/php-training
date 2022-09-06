@@ -27,11 +27,11 @@ $pages = [
 function createNav(array $pages) : string {
     $res = "<ul class='main-nav-list'>";
     foreach($pages as $page){
-        $res += "<li><a class='main-nav-link";
-        if(pathinfo($_SERVER["SCRIPT_NAME"])["basename"] === $page["href"]) echo "active";
-        echo" href='".$page["href"]."'>".$page["title"]."</a></li>";
+        $res .= "<li><a class='main-nav-link";
+        if(pathinfo($_SERVER["SCRIPT_NAME"])["basename"] === $page["href"]) $res .= " active";
+        $res .= "' href='".$page["href"]."'>".$page["title"]."</a></li>";
     }
-    return $res+="</ul>";
+    return $res.="</ul>";
 }
 
 ?>
@@ -51,13 +51,13 @@ function createNav(array $pages) : string {
         <header class="header">
             <h1 class="main-ttl">Introduction PHP - <?= $title !== "" ? $title : $name ?></h1>
             <nav class="main-nav">
-                <!-- <?=createNav($pages)?> -->
-                <ul class="main-nav-list">
+                <?=createNav($pages)?>
+                <!-- <ul class="main-nav-list">
                     <li><a class="main-nav-link <?php if(pathinfo($_SERVER["SCRIPT_NAME"])["basename"] === "index.php") echo "active" ?> " href="index.php">Entrainement</a></li>
                     <li><a class="main-nav-link <?php if(pathinfo($_SERVER["SCRIPT_NAME"])["basename"] === "exo2.php") echo "active" ?> " href="exo2.php">Donnez moi des fruits</a></li>
                     <li><a class="main-nav-link <?php if(pathinfo($_SERVER["SCRIPT_NAME"])["basename"] === "exo3.php") echo "active" ?> " href="exo3.php">Donnez moi de la thune</a></li>
                     <li><a class="main-nav-link <?php if(pathinfo($_SERVER["SCRIPT_NAME"])["basename"] === "exo4.php") echo "active" ?> " href="exo4.php">Des fonctions et des tableaux</a></li>
                     <li><a class="main-nav-link <?php if(pathinfo($_SERVER["SCRIPT_NAME"])["basename"] === "exo5.php") echo "active" ?> " href="exo5.php">Netflix</a></li>
-                </ul>
+                </ul> -->
             </nav>
         </header>
